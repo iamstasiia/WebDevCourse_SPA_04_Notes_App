@@ -5,6 +5,7 @@ import {
     mongoDCListener,
     mongoErrorListener,
 } from "./db/connection.db.js";
+import { NoteModel } from "./models/note.model.js";
 config();
 
 const server = express();
@@ -14,6 +15,12 @@ server.use(json());
 await mongoConnection();
 mongoErrorListener();
 mongoDCListener();
+
+// Model
+await NoteModel.create({
+    title: "Test Title",
+    text: "Test Text",
+});
 
 // Error Middleware
 server.use((err, req, res, next) => {
