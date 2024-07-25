@@ -1,5 +1,6 @@
 import express, { json } from "express";
 import { config } from "dotenv";
+import cors from "cors";
 import {
     mongoConnection,
     mongoDCListener,
@@ -10,6 +11,7 @@ import { NoteRouter } from "./routes/note.router.js";
 config();
 
 const server = express();
+server.use(cors());
 server.use(json());
 
 // DB Connection
