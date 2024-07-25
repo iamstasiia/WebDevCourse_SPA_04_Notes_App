@@ -1,12 +1,13 @@
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
+import NotesListComponent from './components/main/NotesList.component.jsx';
+import HeaderComponent from './components/header/Header.component.jsx';
+import './App.scss'
 
 function App() {
 
   return (
     <>
-
+      <HeaderComponent />
+      <NotesListComponent />
     </>
   )
 }
