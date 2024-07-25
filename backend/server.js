@@ -1,6 +1,10 @@
 import express, { json } from "express";
 import { config } from "dotenv";
-import { mongoConnection } from "./db/connection.db.js";
+import {
+    mongoConnection,
+    mongoDCListener,
+    mongoErrorListener,
+} from "./db/connection.db.js";
 config();
 
 const server = express();
@@ -8,6 +12,8 @@ server.use(json());
 
 // DB Connection
 await mongoConnection();
+mongoErrorListener();
+mongoDCListener();
 
 // Error Middleware
 server.use((err, req, res, next) => {
